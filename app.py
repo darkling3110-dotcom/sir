@@ -1,5 +1,5 @@
 import streamlit as st
-from datetime import datetime, timedelta, timezone
+import datetime
 import os
 from dotenv import load_dotenv
 
@@ -131,12 +131,10 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ==========================================
-# ⚙️ 2. MANTIQ VA AI TIZIMI (VAQT TO'G'RILANDI)
+# ⚙️ 2. MANTIQ VA AI TIZIMI
 # ==========================================
-# O'zbekiston vaqti (UTC+5) ni aniqlash
-uzb_vaqti = timezone(timedelta(hours=5))
-# Maqsadni 2026-yil 15-iyul soat 00:00 qilib aynan shu mintaqada belgilash
-TARGET_DATE = datetime(2026, 7, 15, 0, 0, 0, tzinfo=uzb_vaqti) 
+uzb_vaqti = datetime.timezone(datetime.timedelta(hours=5))
+TARGET_DATE = datetime.datetime(2026, 7, 15, 0, 0, 0, tzinfo=uzb_vaqti) 
 
 def generate_exclusive_wishes():
     api_key = os.getenv("GEMINI_API_KEY")
@@ -163,8 +161,7 @@ def generate_exclusive_wishes():
 # ==========================================
 # 🖥️ 3. INTERAKTIV RAQAMLI INTERFEYS
 # ==========================================
-# Hozirgi vaqtni ham O'zbekiston vaqti bilan olish
-now = datetime.now(uzb_vaqti)
+now = datetime.datetime.now(uzb_vaqti)
 diff = TARGET_DATE - now
 
 left_col, main_col, right_col = st.columns([1, 2.8, 1])
@@ -204,6 +201,16 @@ else:
     else:
         st.balloons() 
         
+        # Chap tomon uchun jonli bezaklar (Palitra va Tort)
+        with left_col:
+            st.markdown("<div style='font-size: 80px; text-align: center; margin-top: 100px; animation: floatAndWobble 4s infinite ease-in-out;'>🎨</div>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size: 65px; text-align: center; margin-top: 70px; animation: floatAndWobble 5s infinite ease-in-out; filter: drop-shadow(0 0 15px rgba(255,215,0,0.5));'>🎂</div>", unsafe_allow_html=True)
+
+        # O'ng tomon uchun jonli bezaklar (Moyqalam va Yulduzchalar)
+        with right_col:
+            st.markdown("<div style='font-size: 80px; text-align: center; margin-top: 120px; animation: floatAndWobble 3.5s infinite ease-in-out;'>🖌️</div>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size: 70px; text-align: center; margin-top: 60px; animation: floatAndWobble 4.5s infinite ease-in-out; filter: drop-shadow(0 0 15px rgba(255,77,133,0.5));'>✨</div>", unsafe_allow_html=True)
+            
         with main_col:
             st.markdown("<div class='rl-signature'>R L</div>", unsafe_allow_html=True)
             st.markdown("<div class='elegant-title'>20 Yoshing Muborak, Eng Go'zal Rassom! 🎨</div>", unsafe_allow_html=True)
