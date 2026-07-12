@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 st.set_page_config(
-    page_title="Laylo, 20 yoshing muborak! 🎨✨",
+    page_title="Sirli syurpriz ✨",
     page_icon="🎁",
     layout="wide"
 )
