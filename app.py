@@ -15,7 +15,7 @@ if 'gift_opened' not in st.session_state:
     st.session_state.gift_opened = False
 
 # ==========================================
-# 🎨 1. SIRLI, QORONG'U VA PREMIUM FON CSS (DARK NEON)
+# 🎨 1. SIRLI, QORONG'U VA PREMIUM FON CSS
 # ==========================================
 st.markdown("""
     <style>
@@ -91,30 +91,7 @@ st.markdown("""
         border: 1px solid rgba(255, 77, 133, 0.5);
     }
     
-    /* SOVG'A TUGMASINI YASHIRISH VA JONLANTIRISH */
-    div[data-testid="stButton"] {
-        display: flex !important;
-        justify-content: center !important;
-    }
-    div[data-testid="stButton"] > button {
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-        animation: floatAndWobble 3s infinite ease-in-out;
-        transition: all 0.2s ease;
-    }
-    div[data-testid="stButton"] > button p {
-        font-size: 160px !important;
-        margin: 0 !important;
-        line-height: 1.1 !important;
-    }
-    div[data-testid="stButton"] > button:hover {
-        animation: violentShake 0.4s infinite !important;
-        transform: scale(1.15) !important;
-        filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.6));
-    }
-
+    /* ANIMATSIYALAR UCHUN */
     @keyframes floatAndWobble {
         0%, 100% { transform: translateY(0) rotate(-3deg); filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5)); }
         50% { transform: translateY(-20px) rotate(3deg); filter: drop-shadow(0 25px 25px rgba(255,215,0,0.2)); }
@@ -170,7 +147,6 @@ if diff.total_seconds() > 0:
     with main_col:
         st.write("")
         st.markdown("<div class='rl-signature'>R L</div>", unsafe_allow_html=True)
-        # YANGI INTRIGALI MATN
         st.markdown("<div class='elegant-title'>Senga atalgan sirli syurprizning qulfi ochilishiga... ⏳</div>", unsafe_allow_html=True)
         
         kun, soat, daqiqa = diff.days, diff.seconds // 3600, (diff.seconds % 3600) // 60
@@ -179,15 +155,32 @@ if diff.total_seconds() > 0:
         c1.metric("Kun", f"{kun}")
         c2.metric("Soat", f"{soat}")
         c3.metric("Daqiqa", f"{daqiqa}")
+        
         st.write("")
         st.warning("🔒 15-iyul 00:00 da senga atalgan mo'jizaviy sovg'a shu yerda namoyon bo'ladi...")
+        
+        st.write("")
+        if st.button("Qulfni buzib, hoziroq ochishga urinib ko'rish 🛠️", use_container_width=True):
+            st.error("E-he, shoshilmang! 😜 Bu qulfni vaqtidan oldin buzishning umuman iloji yo'q. Sabr bilan kutishda davom eting...")
+            
+        st.markdown("<p style='text-align: center; font-style: italic; color: #888888; margin-top: 40px;'>Haqiqiy san'at asari va uning mo'jizasi faqat o'z vaqti-soatida namoyon bo'ladi... 🎨⏳</p>", unsafe_allow_html=True)
 
 else:
     if not st.session_state.gift_opened:
+        
+        # FAKAT GIGANT SOVG'A TUGMASI UCHUN MAXSUS CSS
+        st.markdown("""
+            <style>
+            div[data-testid="stButton"] { display: flex !important; justify-content: center !important; }
+            div[data-testid="stButton"] > button { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; animation: floatAndWobble 3s infinite ease-in-out; transition: all 0.2s ease; }
+            div[data-testid="stButton"] > button p { font-size: 160px !important; margin: 0 !important; line-height: 1.1 !important; }
+            div[data-testid="stButton"] > button:hover { animation: violentShake 0.4s infinite !important; transform: scale(1.15) !important; filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.6)); }
+            </style>
+        """, unsafe_allow_html=True)
+        
         with main_col:
             st.write("")
             st.markdown("<div class='rl-signature'>R L</div>", unsafe_allow_html=True)
-            # YANGI JONLI MATN
             st.markdown("<div class='elegant-title'>Sirli syurpriz o'z egasini kutmoqda! 🎉</div>", unsafe_allow_html=True)
             st.info("Senga atalgan maxsus sovg'a qulfdan chiqdi. Uni ochish uchun qutining ustiga bos!")
             
@@ -201,12 +194,10 @@ else:
     else:
         st.balloons() 
         
-        # Chap tomon uchun jonli bezaklar (Palitra va Tort)
         with left_col:
             st.markdown("<div style='font-size: 80px; text-align: center; margin-top: 100px; animation: floatAndWobble 4s infinite ease-in-out;'>🎨</div>", unsafe_allow_html=True)
             st.markdown("<div style='font-size: 65px; text-align: center; margin-top: 70px; animation: floatAndWobble 5s infinite ease-in-out; filter: drop-shadow(0 0 15px rgba(255,215,0,0.5));'>🎂</div>", unsafe_allow_html=True)
 
-        # O'ng tomon uchun jonli bezaklar (Moyqalam va Yulduzchalar)
         with right_col:
             st.markdown("<div style='font-size: 80px; text-align: center; margin-top: 120px; animation: floatAndWobble 3.5s infinite ease-in-out;'>🖌️</div>", unsafe_allow_html=True)
             st.markdown("<div style='font-size: 70px; text-align: center; margin-top: 60px; animation: floatAndWobble 4.5s infinite ease-in-out; filter: drop-shadow(0 0 15px rgba(255,77,133,0.5));'>✨</div>", unsafe_allow_html=True)
