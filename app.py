@@ -136,7 +136,7 @@ st.markdown("""
 # O'zbekiston vaqti (UTC+5) ni aniqlash
 uzb_vaqti = timezone(timedelta(hours=5))
 # Maqsadni 2026-yil 15-iyul soat 00:00 qilib aynan shu mintaqada belgilash
-TARGET_DATE = datetime(2026, 7, 1, 0, 0, 0, tzinfo=uzb_vaqti) 
+TARGET_DATE = datetime(2026, 7, 15, 0, 0, 0, tzinfo=uzb_vaqti) 
 
 def generate_exclusive_wishes():
     api_key = os.getenv("GEMINI_API_KEY")
