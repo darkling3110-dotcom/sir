@@ -134,7 +134,6 @@ st.markdown("""
 # ==========================================
 # ⚙️ 2. MANTIQ VA AI TIZIMI
 # ==========================================
-TARGET_DATE = datetime.datetime(2026, 7, 15, 0, 0, 0) # Tekshirish uchun 1-iyul, so'ng 15 qilasiz!
 
 def generate_exclusive_wishes():
     api_key = os.getenv("GEMINI_API_KEY")
