@@ -1,4 +1,6 @@
 import streamlit as st
+from datetime import datetime, timedelta, timezone
+import google.generativeai as genai
 
 # 1. Sahifa sozlamalari (Tepadagi nom va ikonka)
 st.set_page_config(page_title="Sirli syurpriz ✨", page_icon="🎁")
